@@ -41,34 +41,33 @@ export function renderComments(comments) {
 
     const commentsPageHTML = `
     <div class="container">
-      <ul id="list" class="comments">
-      ${commentsHTML};
-
-      </ul>
-      ${token ? `<div class="add-form hidden">
-      <input id="name-input"
-        type="text"
-        class="add-form-name"
-        placeholder="Введите ваше имя"
-      />
-      <textarea id="comment-input"
-        type="textarea"
-        class="add-form-text"
-        placeholder="Введите ваш коментарий"
-        rows="4"
-      ></textarea>
-      <div class="add-form-row">
-        <button id="add-button" class="add-form-button " >Написать</button>
-      </div>
-    </div>` : `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>зарегистрируйтесь</а></p>`}
+         <ul id="list" class="comments">
+         ${commentsHTML}
+         </ul>
+          ${token ? `<div class="add-form hidden">
+                     <input id="name-input"
+                     type="text"
+                     class="add-form-name"
+                     placeholder="Введите ваше имя"
+                     />
+                     <textarea id="comment-input"
+                     type="textarea"
+                     class="add-form-text"
+                     placeholder="Введите ваш коментарий"
+                     rows="4"
+                     ></textarea>
+                     <div class="add-form-row">
+                     <button id="add-button" class="add-form-button " >Написать</button>
+                     </div>
+                  </div>` :
+                   `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>зарегистрируйтесь</а>
+                   </p>`
+               }
       
-      <div class="comment-loader hidden">
-        <span>Комментарий отправляется</span>
-      </div>
-    </div>
-  </div>
-    
-    `
+            <div class="comment-loader hidden">
+            <span>Комментарий отправляется</span>
+            </div>
+     </div> `
     
     const appElement = document.getElementById('app');
 

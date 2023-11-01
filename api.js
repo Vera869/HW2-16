@@ -15,7 +15,7 @@ token = newToken
 
 
 export function getElements() {
-  return fetch("https://wedev-api.sky.pro/api/v2/liza-moguchaya/comments", {
+  return fetch("https://wedev-api.sky.pro/api/v2/Vereya/comments", {
     method: "GET"
   })
     .then((response) => response.json())
@@ -79,7 +79,7 @@ export function postElements({text, name}) {
 
 const nameInputElement = document.getElementById("name-input");
 const commentInputElement = document.getElementById("comment-input");
-  return fetch('https://wedev-api.sky.pro/api/v2/liza-moguchaya/comments', {
+  return fetch('https://wedev-api.sky.pro/api/v2/Vereya/comments', {
 
     method: "POST",
     headers: {
