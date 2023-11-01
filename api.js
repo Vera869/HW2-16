@@ -1,7 +1,8 @@
 import { getFetch } from "./main.js";
 import { renderComments } from "./renderComments.js";
 
-
+const host = "https://wedev-api.sky.pro/api/v2/vera-Bu/comments";
+// let token = "Bearer bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck";
 
 //  let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k"
 export let token = null
@@ -15,7 +16,7 @@ token = newToken
 
 
 export function getElements() {
-  return fetch("https://wedev-api.sky.pro/api/v2/Vereya/comments", {
+  return fetch(host, {
     method: "GET"
   })
     .then((response) => response.json())
@@ -74,12 +75,11 @@ const listElement = document.getElementById("list");
 // const commentInputElement = document.getElementById("comment-input");
 
 
-
 export function postElements({text, name}) {
 
 const nameInputElement = document.getElementById("name-input");
 const commentInputElement = document.getElementById("comment-input");
-  return fetch('https://wedev-api.sky.pro/api/v2/Vereya/comments', {
+  return fetch(host, {
 
     method: "POST",
     headers: {
@@ -89,11 +89,7 @@ const commentInputElement = document.getElementById("comment-input");
       text: text,
       name: name
     })
-
-
-  })
-
-    .then((response) => {
+  }).then((response) => {
       if (response.status === 500) {
         throw new Error("Сервер упал, попробуй позже");
       } else if (response.status === 400) {
@@ -101,8 +97,7 @@ const commentInputElement = document.getElementById("comment-input");
       } else {
         return response.json();
       };
-    })
-    .then((responseData) => {
+    }).then((responseData) => {
 
       //deleteLoadingIndicatorComments();
       showAddForm();
