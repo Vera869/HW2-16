@@ -42,18 +42,8 @@ export function getFetch() {
       }
     });
     comments = appComment
-    //renderElements();
-    console.log(1);
     renderComments(comments);
     deleteLoadingIndicator();
-    // if(getToken()){
-    // hideAuthForm();
-    // showAddForm();
-    
-    // }else{
-    //   showAuthForm();
-    // }
-
   })
     .catch((error) => {
       console.log(error);

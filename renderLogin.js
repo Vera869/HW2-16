@@ -59,7 +59,6 @@ export function renderLogin() {
                 login: login,
                 password: password
             }).then((user) => {
-                console.log(user);
                 setToken(`Bearer ${user.user.token}`)
                 getFetch();
             }).catch(error => {
@@ -89,7 +88,6 @@ export function renderLogin() {
                 password: password,
                 name: name
             }).then((user) => {
-                console.log(user);
                 setToken(`Bearer ${user.user.token}`)
                 getFetch();
             }).catch(error => {

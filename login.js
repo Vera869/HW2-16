@@ -59,7 +59,6 @@ export function userAutorisation() {
       setToken(`Bearer ${user.user.token}`)
       getFetch();
     }).catch(error => {
-               //TODO: выводить alert красиво
                console.log(error);
                console.error(error.message);
                 });
@@ -91,7 +90,6 @@ export function userAutorisation() {
               setToken(`Bearer ${user.user.token}`)
               getFetch();
             }).catch(error => {
-                       //TODO: выводить alert красиво
                        console.error(error.message);
                         });
     }
@@ -102,6 +100,6 @@ export function userAutorisation() {
     renderForm();
   })
  }
-// renderForm()
+//renderForm()
 
  };

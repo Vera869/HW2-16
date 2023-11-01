@@ -44,7 +44,7 @@ export function renderComments(comments) {
          <ul id="list" class="comments">
          ${commentsHTML}
          </ul>
-          ${token ? `<div class="add-form hidden">
+          ${token ? `<div class="add-form">
                      <input id="name-input"
                      type="text"
                      class="add-form-name"
@@ -89,12 +89,10 @@ addComment();
 export function addComment() {
 
   const buttonElement = document.getElementById("add-button");
-  console.log(buttonElement);
   const nameInputElement = document.getElementById("name-input");
   const commentInputElement = document.getElementById("comment-input");
+  
   buttonElement.addEventListener('click', () => {
-    console.log(buttonElement);
-   
     nameInputElement.classList.remove("error");
     commentInputElement.classList.remove("error");
     if (nameInputElement.value === '' || commentInputElement.value === '') {
@@ -140,15 +138,14 @@ function addLike(comments) {
   }
 
 }
-
-function commentOnComment(comments) {
+export function commentOnComment(comments) {
   const commentInputElement = document.getElementById("comment-input");
   const commentElements = document.querySelectorAll('.comment');
   for (let comment of commentElements) {
-    comment.addEventListener('click', () => {
+    comment.addEventListener('click', (event) => {
+      event.stopPropagation();
       let index = comment.dataset.index
       let object = comments[index];
-      console.log(commentInputElement);
       commentInputElement.value = `${object.text}  ${object.name}`
       renderComments(getComments());
     })
