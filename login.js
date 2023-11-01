@@ -1,6 +1,6 @@
 import { loginUser, autorizatedUser, setToken } from "./api.js";
 import { getFetch } from "./main.js";
-//import { renderComments } from "./rernder.js";
+// import { renderComments, renderForm } from "./rernder.js";
 
 let isAutorized = false;
 export function userAutorisation() {

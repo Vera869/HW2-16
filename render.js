@@ -55,17 +55,15 @@ export function renderComments(comments) {
 };
 
 
-
-
-// export function showAuthForm() {
-//   const form = document.querySelector(".autorization");
-//   form.classList.remove("hidden");
+export function showAuthForm() {
+  const form = document.querySelector(".autorization");
+  form.classList.remove("hidden");
   
-// };
-// export function hideAuthForm() {
-//   const form = document.querySelector(".autorization");
-//   form.classList.add("hidden");
-// };
+};
+export function hideAuthForm() {
+  const form = document.querySelector(".autorization");
+  form.classList.add("hidden");
+};
 
 // function commentOnComment(comments) {
 //   const commentInputElement = document.getElementById("comment-input");
