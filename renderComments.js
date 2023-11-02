@@ -79,7 +79,7 @@ export function renderComments(comments) {
     })
 addLike(comments);
 getComments();
-commentOnComment(comments);
+renderAnswer(comments);
 addComment();
 
 
@@ -122,10 +122,7 @@ function addLike(comments) {
     like.addEventListener('click', (event) => {
       event.stopPropagation();
       let index = like.dataset.index
-      console.log(index);
-      console.log(comments);
       let object = comments[index];
-      console.log(object);
       if (object.islike) {
         object.islike = false;
         object.likes--;
@@ -138,7 +135,8 @@ function addLike(comments) {
   }
 
 }
-export function commentOnComment(comments) {
+
+export function renderAnswer(comments) {
   const commentInputElement = document.getElementById("comment-input");
   const commentElements = document.querySelectorAll('.comment');
   for (let comment of commentElements) {

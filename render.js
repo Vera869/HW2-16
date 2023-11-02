@@ -48,7 +48,7 @@ export function renderComments(comments) {
 
   
   list.innerHTML = commentsHTML;
-  // commentOnComment(comments);
+  // renderAnswer(comments);
   // deleteComment(comments);
   // addLike(comments);
   // getComments();
@@ -65,7 +65,7 @@ export function renderComments(comments) {
 //   form.classList.add("hidden");
 // };
 
-// function commentOnComment(comments) {
+// function renderAnswer(comments) {
 //   const commentInputElement = document.getElementById("comment-input");
 //   const commentElements = document.querySelectorAll('.comment');
 //   for (let comment of commentElements) {

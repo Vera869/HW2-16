@@ -26,8 +26,8 @@ export const сomments = (newComments) => {
 
 export function getFetch() {
 
-  showLoadingIndicator();
-  hideAddForm();
+  // showLoadingIndicator();
+  // hideAddForm();
 
 
   getElements().then((responseData) => {
@@ -47,7 +47,6 @@ export function getFetch() {
   })
     .catch((error) => {
       console.log(error);
-      console.error('Что-то пошло не так, попробуйте позже');
     });
 
 

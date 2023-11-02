@@ -17,7 +17,7 @@ export function errorProcessingGet(error) {
        alert("Кажется, у вас сломался интернет, попробуйте позже");
        return}
 }
-export function errorProcessingPost({error, addForm, commentLoader, getFetch}) {
+export function errorProcessingPost({error, getFetch}) {
    if (error.message === "Сервер сломался") {
       // commentLoader.style.display = "none";
       // addForm.style.display = "flex" ;

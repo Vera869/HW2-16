@@ -4,7 +4,6 @@ import { renderComments } from "./renderComments.js";
 const host = "https://wedev-api.sky.pro/api/v2/vera-Bu/comments";
 // let token = "Bearer bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck";
 
-//  let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k"
 export let token = null
 export const getToken = () => {
 return token;
@@ -27,8 +26,8 @@ export function showAddForm() {
   
 };
 export function hideAddForm() {
-  // const form = document.querySelector(".add-form");
-  // form.classList.add("hidden");
+  const form = document.querySelector(".add-form");
+  form.classList.add("hidden");
 };
 export function showLoadingIndicatorComments() {
   const loader = document.querySelector(".comment-loader");
@@ -40,8 +39,8 @@ export function deleteLoadingIndicatorComments() {
 
 };
 export function showLoadingIndicator() {
-  // const loader = document.querySelector(".list-loader");
-  // loader.classList.remove("hidden");
+  const loader = document.querySelector(".list-loader");
+  loader.classList.remove("hidden");
 
 };
 
