@@ -60,7 +60,7 @@ export function renderComments(comments) {
                      <button id="add-button" class="add-form-button " >Написать</button>
                      </div>
                   </div>` :
-                   `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>зарегистрируйтесь</а>
+                   `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>авторизуйтесь</а>
                    </p>`
                }
       
