@@ -1,0 +1,17 @@
+{
+   "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+   },
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+     "ecnaVersion": 2020
+  },
+  "rules": {
+      "prettier/prettier": "error",
+      "camelCase": ["error"],
+      "eqeqeq": ["error", "always"]
+  }
+}
