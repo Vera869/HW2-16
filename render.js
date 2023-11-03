@@ -1,23 +1,30 @@
-import { getComments } from './main.js';
-import { postElements, showLoadingIndicatorComments, hideAddForm, getToken, autorizatedUser, setToken} from './api.js';
-import { userAutorisation } from './login.js';
-
+import { getComments } from "./main.js";
+import {
+  postElements,
+  showLoadingIndicatorComments,
+  hideAddForm,
+  getToken,
+  autorizatedUser,
+  setToken,
+} from "./api.js";
+import { userAutorisation } from "./login.js";
 
 const listElement = document.getElementById("list");
 const nameInputElement = document.getElementById("name-input");
 const commentInputElement = document.getElementById("comment-input");
 const listElements = document.getElementById("list");
-const nameElement = document.querySelector('.add-form-name');
-const textElement = document.querySelector('.add-form-text');
-const buttonElements = document.querySelector('.add-form-button');
-const deleteButtonElement = document.querySelector('.delete-button');
+const nameElement = document.querySelector(".add-form-name");
+const textElement = document.querySelector(".add-form-text");
+const buttonElements = document.querySelector(".add-form-button");
+const deleteButtonElement = document.querySelector(".delete-button");
 
 export function renderComments(comments) {
-  const appEl = document.getElementById('app');
+  const appEl = document.getElementById("app");
   console.log(comments);
   const list = document.getElementById("list");
-  const commentsHTML = comments.map((element, index) => {
-    return `<li class="comment" data-index="${index}" >
+  const commentsHTML = comments
+    .map((element, index) => {
+      return `<li class="comment" data-index="${index}" >
          <div class="comment-header">
            <div>${element.name}</div>
            <div>${element.date}</div>
@@ -30,35 +37,30 @@ export function renderComments(comments) {
          <div class="comment-footer">
            <div class="likes">
              <span class="likes-counter">${element.likes}</span>
-             <button data-index="${index}" class="like-button ${element.islike ? "-active-like" : ""}"></button>
+             <button data-index="${index}" class="like-button ${
+               element.islike ? "-active-like" : ""
+             }"></button>
              
            </div>
          </div>
          <button data-index="${index}" class="add-form-button delete-button">Удалить</button>
-       </li>`
+       </li>`;
+    })
+    .join("");
 
-  }).join("");
+  const authorizationRow = `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>зарегистрируйтесь</а></p>`;
 
-  
-
-
-  const authorizationRow = `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>зарегистрируйтесь</а></p>`
- 
-   
-
-  
   list.innerHTML = commentsHTML;
   // renderAnswer(comments);
   // deleteComment(comments);
   // addLike(comments);
   // getComments();
-};
-
+}
 
 // export function showAuthForm() {
 //   const form = document.querySelector(".autorization");
 //   form.classList.remove("hidden");
-  
+
 // };
 // export function hideAuthForm() {
 //   const form = document.querySelector(".autorization");
@@ -92,7 +94,6 @@ export function renderComments(comments) {
 
 // };
 
-
 // export function addComment(comments) {
 //   const buttonElement = document.getElementById("add-button");
 //   console.log(buttonElement);
@@ -100,7 +101,7 @@ export function renderComments(comments) {
 //   const commentInputElement = document.getElementById("comment-input");
 //   buttonElement.addEventListener('click', () => {
 //     console.log(buttonElement);
-   
+
 //     nameInputElement.classList.remove("error");
 //     commentInputElement.classList.remove("error");
 //     if (nameInputElement.value === '' || commentInputElement.value === '') {
@@ -121,7 +122,6 @@ export function renderComments(comments) {
 //   });
 
 // }
-
 
 // function addLike(comments) {
 

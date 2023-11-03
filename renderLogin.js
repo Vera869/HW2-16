@@ -2,18 +2,19 @@ import { autorizatedUser, loginUser, setToken } from "./api.js";
 import { getFetch } from "./main.js";
 let isLoginMode = true;
 export function renderLogin() {
-   
-
-    const loginHTML = `
+  const loginHTML = `
     <div class="container">
     <div class="password">
-     <h2 class="title"> Форма ${isLoginMode ? 'Входа' : 'Регистрации'}</h2>
-     ${isLoginMode ? "" :
-            `<input 
+     <h2 class="title"> Форма ${isLoginMode ? "Входа" : "Регистрации"}</h2>
+     ${
+       isLoginMode
+         ? ""
+         : `<input 
      type="text"
      class="login-input" id="name-input-autorization"
      placeholder="Имя"
-    />`}</button>
+    />`
+     }</button>
             
             <input 
               type="text"
@@ -27,79 +28,84 @@ export function renderLogin() {
               rows="4"
             ></textarea>
             <div class="add-form-row">
-              <button id="enter-button" class="enter-button " >${isLoginMode ? 'Войти' : 'Зарегистрироваться'}</button>
-              <button id="registration-button" class="enter-button " >Перейти ${isLoginMode ? 'К регистрации' : 'Ко входу'}</button></button>
+              <button id="enter-button" class="enter-button " >${
+                isLoginMode ? "Войти" : "Зарегистрироваться"
+              }</button>
+              <button id="registration-button" class="enter-button " >Перейти ${
+                isLoginMode ? "К регистрации" : "Ко входу"
+              }</button></button>
             </div> 
     
     </div>
     
-    `
-    const appElement = document.getElementById('app');
+    `;
+  const appElement = document.getElementById("app");
 
-    appElement.innerHTML = loginHTML
+  appElement.innerHTML = loginHTML;
 
-    document.getElementById('enter-button').addEventListener('click', () => {
-       
-        if (isLoginMode) {
-            const login = document.getElementById('login-input').value
-            const password = document.getElementById('password-input').value
+  document.getElementById("enter-button").addEventListener("click", () => {
+    if (isLoginMode) {
+      const login = document.getElementById("login-input").value;
+      const password = document.getElementById("password-input").value;
 
+      if (!login) {
+        alert("Введите логин");
+        return;
+      }
 
-            if (!login) {
-                alert('Введите логин');
-                return;
-            }
+      if (!password) {
+        alert("Введите пароль");
+        return;
+      }
 
-            if (!password) {
-                alert('Введите пароль');
-                return;
-            }
+      loginUser({
+        login: login,
+        password: password,
+      })
+        .then((user) => {
+          setToken(`Bearer ${user.user.token}`);
+          getFetch();
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    } else {
+      const login = document.getElementById("login-input").value;
+      const password = document.getElementById("password-input").value;
+      const name = document.getElementById("name-input-autorization").value;
+      if (!login) {
+        alert("Введите логин");
+        return;
+      }
 
-            loginUser({
-                login: login,
-                password: password
-            }).then((user) => {
-                setToken(`Bearer ${user.user.token}`)
-                getFetch();
-            }).catch(error => {
-                console.error(error.message);
-            });
-        } else {
+      if (!password) {
+        alert("Введите пароль");
+        return;
+      }
+      if (!name) {
+        alert("Введите имя");
+        return;
+      }
 
-            const login = document.getElementById('login-input').value
-            const password = document.getElementById('password-input').value
-            const name = document.getElementById('name-input-autorization').value
-            if (!login) {
-                alert('Введите логин');
-                return;
-            }
+      autorizatedUser({
+        login: login,
+        password: password,
+        name: name,
+      })
+        .then((user) => {
+          setToken(`Bearer ${user.user.token}`);
+          getFetch();
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    }
+  });
 
-            if (!password) {
-                alert('Введите пароль');
-                return;
-            }
-            if (!name) {
-               alert('Введите имя');
-                return;
-            }
-
-            autorizatedUser({
-                login: login,
-                password: password,
-                name: name
-            }).then((user) => {
-                setToken(`Bearer ${user.user.token}`)
-                getFetch();
-            }).catch(error => {
-               
-                console.error(error.message);
-            });
-        }
+  document
+    .getElementById("registration-button")
+    .addEventListener("click", () => {
+      isLoginMode = !isLoginMode;
+      renderLogin();
     });
-
-    document.getElementById('registration-button').addEventListener('click', () => {
-        isLoginMode = !isLoginMode;
-        renderLogin();
-    })
-
 }

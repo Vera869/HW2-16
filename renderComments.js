@@ -1,23 +1,30 @@
-import { token } from "./api.js"
-import { postElements, showLoadingIndicatorComments, hideAddForm, getToken, autorizatedUser, setToken} from './api.js';
+import { token } from "./api.js";
+import {
+  postElements,
+  showLoadingIndicatorComments,
+  hideAddForm,
+  getToken,
+  autorizatedUser,
+  setToken,
+} from "./api.js";
 import { renderLogin } from "./renderLogin.js";
-import { getComments, comments } from './main.js';
+import { getComments, comments } from "./main.js";
 
 const listElement = document.getElementById("list");
 const nameInputElement = document.getElementById("name-input");
 const commentInputElement = document.getElementById("comment-input");
 const listElements = document.getElementById("list");
-const nameElement = document.querySelector('.add-form-name');
-const textElement = document.querySelector('.add-form-text');
-const buttonElements = document.querySelector('.add-form-button');
-const deleteButtonElement = document.querySelector('.delete-button');
+const nameElement = document.querySelector(".add-form-name");
+const textElement = document.querySelector(".add-form-text");
+const buttonElements = document.querySelector(".add-form-button");
+const deleteButtonElement = document.querySelector(".delete-button");
 const buttonElement = document.getElementById("add-button");
 
-
 export function renderComments(comments) {
-    const list = document.getElementById("list");
-    const commentsHTML = comments.map((element, index) => {
-        return `<li class="comment" data-index="${index}" >
+  const list = document.getElementById("list");
+  const commentsHTML = comments
+    .map((element, index) => {
+      return `<li class="comment" data-index="${index}" >
              <div class="comment-header">
                <div>${element.name}</div>
                <div>${element.date}</div>
@@ -30,21 +37,25 @@ export function renderComments(comments) {
              <div class="comment-footer">
                <div class="likes">
                  <span class="likes-counter">${element.likes}</span>
-                 <button data-index="${index}" class="like-button ${element.islike ? "-active-like" : ""}"></button>
+                 <button data-index="${index}" class="like-button ${
+                   element.islike ? "-active-like" : ""
+                 }"></button>
                  
                </div>
              </div>
              <button data-index="${index}" class="add-form-button delete-button">Удалить</button>
-           </li>`
+           </li>`;
+    })
+    .join("");
 
-    }).join("");
-
-    const commentsPageHTML = `
+  const commentsPageHTML = `
     <div class="container">
          <ul id="list" class="comments">
          ${commentsHTML}
          </ul>
-          ${token ? `<div class="add-form">
+          ${
+            token
+              ? `<div class="add-form">
                      <input id="name-input"
                      type="text"
                      class="add-form-name"
@@ -59,43 +70,39 @@ export function renderComments(comments) {
                      <div class="add-form-row">
                      <button id="add-button" class="add-form-button " >Написать</button>
                      </div>
-                  </div>` :
-                   `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>авторизуйтесь</а>
+                  </div>`
+              : `<p>Для добавления комментария, <a id="login-link" class="add-form-link" href='#'>авторизуйтесь</а>
                    </p>`
-               }
+          }
       
             <div class="comment-loader hidden">
             <span>Комментарий отправляется</span>
             </div>
-     </div> `
-    
-    const appElement = document.getElementById('app');
+     </div> `;
 
-    appElement.innerHTML = commentsPageHTML
+  const appElement = document.getElementById("app");
 
-    const linkToLogin = document.getElementById('login-link')
-    linkToLogin?.addEventListener('click', () => {
-        renderLogin();
-    })
-addLike(comments);
-getComments();
-renderAnswer(comments);
-addComment();
+  appElement.innerHTML = commentsPageHTML;
 
-
+  const linkToLogin = document.getElementById("login-link");
+  linkToLogin?.addEventListener("click", () => {
+    renderLogin();
+  });
+  addLike(comments);
+  getComments();
+  renderAnswer(comments);
+  addComment();
 }
 
-
 export function addComment() {
-
   const buttonElement = document.getElementById("add-button");
   const nameInputElement = document.getElementById("name-input");
   const commentInputElement = document.getElementById("comment-input");
-  
-  buttonElement.addEventListener('click', () => {
+
+  buttonElement.addEventListener("click", () => {
     nameInputElement.classList.remove("error");
     commentInputElement.classList.remove("error");
-    if (nameInputElement.value === '' || commentInputElement.value === '') {
+    if (nameInputElement.value === "" || commentInputElement.value === "") {
       nameInputElement.classList.add("error");
       commentInputElement.classList.add("error");
       return;
@@ -107,21 +114,17 @@ export function addComment() {
 
     postElements({
       text: commentInputElement.value,
-      name: nameInputElement.value
-    })
-
+      name: nameInputElement.value,
+    });
   });
-  
-
 }
 
 function addLike(comments) {
-
-  const likeElements = document.querySelectorAll('.like-button');
+  const likeElements = document.querySelectorAll(".like-button");
   for (let like of likeElements) {
-    like.addEventListener('click', (event) => {
+    like.addEventListener("click", (event) => {
       event.stopPropagation();
-      let index = like.dataset.index
+      let index = like.dataset.index;
       let object = comments[index];
       if (object.islike) {
         object.islike = false;
@@ -131,22 +134,20 @@ function addLike(comments) {
         object.likes++;
       }
       renderComments(getComments());
-    })
+    });
   }
-
 }
 
 export function renderAnswer(comments) {
   const commentInputElement = document.getElementById("comment-input");
-  const commentElements = document.querySelectorAll('.comment');
+  const commentElements = document.querySelectorAll(".comment");
   for (let comment of commentElements) {
-    comment.addEventListener('click', (event) => {
+    comment.addEventListener("click", (event) => {
       event.stopPropagation();
-      let index = comment.dataset.index
+      let index = comment.dataset.index;
       let object = comments[index];
-      commentInputElement.value = `${object.text}  ${object.name}`
+      commentInputElement.value = `${object.text}  ${object.name}`;
       renderComments(getComments());
-    })
-
+    });
   }
 }
