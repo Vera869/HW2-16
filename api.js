@@ -49,21 +49,21 @@ export function deleteLoadingIndicator() {
   loader.classList.add("hidden");
 };
 
-export function correctDate(date) {
-  let currentDate = new Date(date);
-  let todayDay = currentDate.getDate();
-  let todayMonth = currentDate.getMonth() + 1;
-  let todayYear = String(currentDate.getFullYear()).slice(-2);
-  let todayHours = currentDate.getHours();
-  let todayMinutes = currentDate.getMinutes();
-  todayDay = todayDay < 10 ? "0" + todayDay : todayDay;
-  todayMonth = todayMonth < 10 ? "0" + todayMonth : todayMonth;
-  todayHours = todayHours < 10 ? "0" + todayHours : todayHours;
-  todayMinutes = todayMinutes < 10 ? "0" + todayMinutes : todayMinutes;
+// export function correctDate(date) {
+//   let currentDate = new Date(date);
+//   let todayDay = currentDate.getDate();
+//   let todayMonth = currentDate.getMonth() + 1;
+//   let todayYear = String(currentDate.getFullYear()).slice(-2);
+//   let todayHours = currentDate.getHours();
+//   let todayMinutes = currentDate.getMinutes();
+//   todayDay = todayDay < 10 ? "0" + todayDay : todayDay;
+//   todayMonth = todayMonth < 10 ? "0" + todayMonth : todayMonth;
+//   todayHours = todayHours < 10 ? "0" + todayHours : todayHours;
+//   todayMinutes = todayMinutes < 10 ? "0" + todayMinutes : todayMinutes;
 
-  let formattedDate = `${todayDay}.${todayMonth}.${todayYear} ${todayHours}:${todayMinutes} `;
-  return formattedDate;
-};
+//   let formattedDate = `${todayDay}.${todayMonth}.${todayYear} ${todayHours}:${todayMinutes} `;
+//   return formattedDate;
+// };
 
 
 const buttonElement = document.getElementById("add-button");
