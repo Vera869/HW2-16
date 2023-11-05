@@ -1,13 +1,4 @@
-import { getComments } from "./main.js";
-import {
-  postElements,
-  showLoadingIndicatorComments,
-  hideAddForm,
-  getToken,
-  autorizatedUser,
-  setToken,
-} from "./api.js";
-import { userAutorisation } from "./login.js";
+
 
 const listElement = document.getElementById("list");
 const nameInputElement = document.getElementById("name-input");

@@ -1,14 +1,4 @@
-import { token } from "./api.js";
-import {
-  postElements,
-  showLoadingIndicatorComments,
-  hideAddForm,
-  getToken,
-  autorizatedUser,
-  setToken,
-} from "./api.js";
-import { renderLogin } from "./renderLogin.js";
-import { getComments, comments } from "./main.js";
+
 
 const listElement = document.getElementById("list");
 const nameInputElement = document.getElementById("name-input");

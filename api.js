@@ -1,44 +1,43 @@
-import { getFetch } from "./main.js";
-import { renderComments } from "./renderComments.js";
+
 
 const host = "https://wedev-api.sky.pro/api/v2/vera-Bu/comments";
 // let token = "Bearer bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck";
 
-export let token = null;
-export const getToken = () => {
+let token = null;
+const getToken = () => {
   return token;
 };
-export const setToken = (newToken) => {
+const setToken = (newToken) => {
   token = newToken;
 };
 
-export function getElements() {
+function getElements() {
   return fetch(host, {
     method: "GET",
   }).then((response) => response.json());
 }
-export function showAddForm() {
+function showAddForm() {
   const form = document.querySelector(".add-form");
   form.classList.remove("hidden");
 }
-export function hideAddForm() {
+function hideAddForm() {
   const form = document.querySelector(".add-form");
   form.classList.add("hidden");
 }
-export function showLoadingIndicatorComments() {
+function showLoadingIndicatorComments() {
   const loader = document.querySelector(".comment-loader");
   loader.classList.remove("hidden");
 }
-export function deleteLoadingIndicatorComments() {
+function deleteLoadingIndicatorComments() {
   const loader = document.querySelector(".comment-loader");
   loader.classList.add("hidden");
 }
-export function showLoadingIndicator() {
+function showLoadingIndicator() {
   const loader = document.querySelector(".list-loader");
   loader.classList.remove("hidden");
 }
 
-export function deleteLoadingIndicator() {
+function deleteLoadingIndicator() {
   const loader = document.querySelector(".list-loader");
   loader.classList.add("hidden");
 }
@@ -66,7 +65,7 @@ const listElement = document.getElementById("list");
 // const nameInputElement = document.getElementById("name-input");
 // const commentInputElement = document.getElementById("comment-input");
 
-export function postElements({ text, name }) {
+function postElements({ text, name }) {
   const nameInputElement = document.getElementById("name-input");
   const commentInputElement = document.getElementById("comment-input");
   return fetch(host, {
@@ -104,7 +103,7 @@ export function postElements({ text, name }) {
     });
 }
 
-export function loginUser({ login, password }) {
+function loginUser({ login, password }) {
   return fetch("https://wedev-api.sky.pro/api/user/login", {
     method: "POST",
     body: JSON.stringify({
@@ -119,7 +118,7 @@ export function loginUser({ login, password }) {
   });
 }
 
-export function autorizatedUser({ login, password, name }) {
+function autorizatedUser({ login, password, name }) {
   return fetch("https://wedev-api.sky.pro/api/user", {
     method: "POST",
     body: JSON.stringify({

@@ -1,18 +1,4 @@
-import {
-  getElements,
-  postElements,
-  showAddForm,
-  hideAddForm,
-  deleteLoadingIndicatorComments,
-  showLoadingIndicator,
-  deleteLoadingIndicator,
-  correctDate,
-  getToken,
-} from "./api.js";
 
-import { userAutorisation } from "./login.js";
-import { renderComments } from "./renderComments.js";
-import { format } from "date-fns";
 ("use strict");
 
 userAutorisation();

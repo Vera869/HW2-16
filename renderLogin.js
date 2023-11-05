@@ -1,5 +1,4 @@
-import { autorizatedUser, loginUser, setToken } from "./api.js";
-import { getFetch } from "./main.js";
+
 let isLoginMode = true;
 export function renderLogin() {
   const loginHTML = `
